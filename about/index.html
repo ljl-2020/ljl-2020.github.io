@@ -331,7 +331,7 @@
                         strings: ['从来没有真正的绝境, 只有心灵的迷途','开始奋斗吧少年'],
                         startDelay: 300,
                         typeSpeed: 100,
-                        loop: false,
+                        loop: true,
                         backSpeed: 50,
                         showCursor: true
                     });
@@ -345,7 +345,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(../medias/banner/6.jpg)');
+    $('.bg-cover').css('background-image', 'url(../medias/banner/1.jpg)');
 </script>
 
 
@@ -361,7 +361,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="../index.html">2</a></span>
+    <span class="count"><a href="../index.html">3</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -386,7 +386,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="../index.html">2</a></span>
+    <span class="count"><a href="../index.html">3</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -529,7 +529,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05"]
+            data: ["2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06"]
         },
         yAxis: {
             type: 'value',
@@ -539,7 +539,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,2],
+                data: [0,0,0,0,0,0,0,0,0,0,0,2,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -871,10 +871,17 @@
 </ul>
 <hr>
 <h3 id="求职意向"><a href="#求职意向" class="headerlink" title="求职意向"></a>求职意向</h3><ul>
-<li>到岗时间：<br></li>
+<li>到岗时间：随时<br></li>
 <li>期望工资：<br></li>
-<li>行业：<br></li>
-<li>目标技能：</li>
+<li>行业：IT<br></li>
+</ul>
+<hr>
+<h3 id="技能"><a href="#技能" class="headerlink" title="技能"></a>技能</h3><ul>
+<li>熟悉Java基础。</li>
+<li>掌握JDBC、JSON、AJAX技术。</li>
+<li>了解JS和JQuery</li>
+<li>能熟练使用Eclipse、Visual StudioCode编程工具</li>
+<li>大学英语四级（CET-4）通过</li>
 </ul>
 <hr>
 <h3 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h3><ul>
@@ -885,6 +892,7 @@
 <h3 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a>教育背景</h3><ul>
 <li>大学：南昌工学院<br></li>
 <li>专业：网络工程</li>
+<li>毕业时间： 2021年7月</li>
 </ul>
 <hr>
 <h3 id="社交主页"><a href="#社交主页" class="headerlink" title="社交主页"></a>社交主页</h3><ul>
@@ -892,7 +900,8 @@
 <li>github：<a href="https://github.com/ljl-2020" target="_blank" rel="noopener">ljl-2020</a></li>
 <li>QQ：2830429738</li>
 </ul>
-<script>
+<hr>
+<h3 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h3><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
