@@ -2022,7 +2022,7 @@ footer .copy-right {
 
 .nav-menu li .sub-nav {
     position: absolute;
-    top: 66px;
+    top: 77px;
     list-style: none;
     margin-left: -20px;
     display: none;
@@ -2085,19 +2085,21 @@ footer .copy-right {
     margin-left: -10px;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent rgba(255, 255, 255, .8)
+    border-color: transparent transparent rgba(255, 255, 255, .1)
 }
 
 .m-nav-item {
-    position: relative;
+   /* position: relative;*/
+   left: 45px;
 }
 
 .m-nav-item ul {
     display: none;
+    background-color: rgba(255, 255,255, .1);
 }
 
 .m-nav-item ul li {
-    width: 255px;
+    width: 245px;
     height: 50px;
     line-height: 50px;
     text-align: center;
@@ -2116,8 +2118,7 @@ footer .copy-right {
     transition: all .3s;
 }
 
-.m-nav-show,
-.m-nav-item > a:hover {
+.m-nav-show .m-nav-item > a:hover {
     color: #FFF;
     background: rgba(255, 255, 255, .8);
 }
@@ -2129,8 +2130,12 @@ footer .copy-right {
 
 .m-nav-item .m-icon {
     position: absolute;
-    right: 15px;
+    right: 65px;
     height: 50px;
     padding: 0px;
     margin: 0px;
+}
+.nav-item li:hover a{
+    color: #FFF;
+    background: rgba(0, 0, 0, .1);
 }
