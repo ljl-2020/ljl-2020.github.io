@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 
 <body>
@@ -589,21 +589,65 @@
 </p><p><code>&lt;bean id="userService" class="com.ljl.user.UserService"&gt;</code><br>    (2)创建工厂类，并增加返回类型为<font color="#0000cd">UserService</font>的方法。在方法体中首先利用dom4j解析xml文件，根据文件解析出class值，然后通过反射创建对象。</p>
 <p></p>
 以下为案例：<br>
-User类如下：
-````
-package com.ljl.ioc_di;
+User类如下：<p>
 
-<p>public class User {<br>    private String name;<br>    private int id;<br>    public User() {}<br>    public User(String name, int id) {<br>        this.name = name;<br>        this.id = id;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }<br>    public void setId(int id) {<br>        this.id = id;<br>    }<br>    @Override<br>    public String toString() {<br>        return “User [name=” + name + “, id=” + id + “]”;<br>    }<br>}</p>
-<pre><code>applicationContext.xml:</code></pre><!--?xml version="1.0" encoding="UTF-8"?-->
-<p><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd"><br>    <bean id="user" class="com.ljl.ioc_di.User"><br>           <property name="name" value="李四"><br>           <property name="id" value="2"><br>   </property></property></bean><br></beans></p>
-<pre><code>测试类TstSpring：</code></pre><p>package com.ljl.test;</p>
-<p>import org.junit.Test;<br>import org.springframework.context.ApplicationContext;<br>import org.springframework.context.support.ClassPathXmlApplicationContext;</p>
-<p>import com.ljl.ioc_di.User;</p>
-<p>public class TestSpring {<br>    @Test<br>    public void fun1() {<br>        ApplicationContext context = new<br>        ClassPathXmlApplicationContext(“applicationContext.xml”);<br>        User user = (User) context.getBean(“user”);<br>        System.out.println(user);<br>    }<br>}</p>
-<pre><code>结果如下：
+</p><pre><code>package com.ljl.ioc_di;
+
+public class User {
+    private String name;
+    private int id;
+    public User() {}
+    public User(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    @Override
+    public String toString() {
+        return "User [name=" + name + ", id=" + id + "]";
+    }    
+}
+applicationContext.xml:
+```
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
+    &lt;bean id="user" class="com.ljl.ioc_di.User"&gt;
+           &lt;property name="name" value="李四"/&gt;
+           &lt;property name="id" value="2"/&gt;
+   &lt;/bean&gt;
+&lt;/beans&gt;
+```
+TestSpring:
+```
+package com.ljl.test;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.ljl.ioc_di.User;
+
+public class TestSpring {
+    @Test
+    public void fun1() {
+        ApplicationContext context = new 
+        ClassPathXmlApplicationContext("applicationContext.xml");
+        User user = (User) context.getBean("user");
+        System.out.println(user);
+    }
+}
+```
+结果如下：
 ![结果](SpringStudyOne/SpringStudyTestResult.jpg)
-</code></pre><script>
+</code></pre><p></p><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
