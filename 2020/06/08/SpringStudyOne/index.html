@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Second, The Blog Of LJL">
+    <meta name="keywords" content="Spring学习一, The Blog Of LJL">
     <meta name="description" content="奋斗吧少年">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Second | The Blog Of LJL</title>
+    <title>Spring学习一 | The Blog Of LJL</title>
     <link rel="icon" type="image/png" href="../../../../favicon.png">
 
     <link rel="stylesheet" type="text/css" href="../../../../libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('../../../../medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Second</h1>
+                    <h1 class="description center-align post-title">Spring学习一</h1>
                 </div>
             </div>
         </div>
@@ -436,9 +436,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="../../../../tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -466,7 +470,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <h3 id="Spring学习基础"><a href="#Spring学习基础" class="headerlink" title="Spring学习基础"></a>Spring学习基础</h3><p>1.Spring是什么？<br>2.Spring能干什么？<br>3.Spring怎么用？</p>
+<h2 id="Spring是什么？"><a href="#Spring是什么？" class="headerlink" title="Spring是什么？"></a>Spring是什么？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring是一个以IOC（Inversion of Control,控制反转）和AOP（Aspect Oriented Programming）为内核的框架。IOC是Spring的基础。</p>
+<p>IOC(控制反转):在传统的编程方式中，获取对象的方式通常使用new关键字主动创建一个对象。而Spring中的IoC方式，对象有IoC容器来创建，装配（初始化）和管理。这种由程序创建对象的方式转变为Spring IoC容器创建对象的反转过程即为IOC。</p>
+<p>DI(Dependency Inject)：依赖注入。所谓依赖注入，就是由IoC容器在运行期间动态的将某种依赖关系注入到对象之间，例如，将对象B注入到对象A的成员变量。</p>
+<p style="color:red;">IOC 与 DI 之间的关系：<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.控制反转和依赖注入是对同一件事的不同描述，从某个方面讲，就是它们的角度不同。依赖注入是从应用程序角度描述，而控制反转则是从容器角度描述。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.依赖注入不能脱离控制反转而单独存在，DI操作需要在IOC基础之上进行。</p>
+<p>IOC底层原理：<br>
+  1.使用的技术：<br>    (1)XML配置文件<br>
+    (2)dom4j解析文件<br>    (3)工厂设计模式<br>    (4)反射<br>
+  2.步骤：<br>
+    (1)创建xml配置文件，配置要创建的对象类，如：<br>
+
+</p><p><code>&lt;bean id="userService" class="com.ljl.user.UserService"&gt;</code><br>    (2)创建工厂类，并增加返回类型为<font color="#0000cd">UserService</font>的方法。在方法体中首先利用dom4j解析xml文件，根据文件解析出class值，然后通过反射创建对象。</p>
+<p></p>
+以下为案例：<br>
+User类如下：
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.ljl.ioc_di;</span><br><span class="line"></span><br><span class="line">public class User {</span><br><span class="line">	private String name;</span><br><span class="line">	private int id;</span><br><span class="line">	public User() {}</span><br><span class="line">	public User(String name, int id) {</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.id = id;</span><br><span class="line">	}</span><br><span class="line">	public void setName(String name) {</span><br><span class="line">		this.name = name;</span><br><span class="line">	}</span><br><span class="line">	public void setId(int id) {</span><br><span class="line">		this.id = id;</span><br><span class="line">	}</span><br><span class="line">	@Override</span><br><span class="line">	public String toString() {</span><br><span class="line">		return "User [name=" + name + ", id=" + id + "]";</span><br><span class="line">	}	</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+applicationContext.xml:
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;beans xmlns="http://www.springframework.org/schema/beans"</span><br><span class="line">    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</span><br><span class="line">    xsi:schemaLocation="http://www.springframework.org/schema/beans</span><br><span class="line">        https://www.springframework.org/schema/beans/spring-beans.xsd"&gt;</span><br><span class="line">    &lt;bean id="user" class="com.ljl.ioc_di.User"&gt;</span><br><span class="line">   		&lt;property name="name" value="李四"/&gt;</span><br><span class="line">   		&lt;property name="id" value="2"/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></tbody></table></figure>
+测试类TestSpring：
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.ljl.test;</span><br><span class="line"></span><br><span class="line">import org.junit.Test;</span><br><span class="line">import org.springframework.context.ApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">import com.ljl.ioc_di.User;</span><br><span class="line"></span><br><span class="line">public class TestSpring {</span><br><span class="line">	@Test</span><br><span class="line">	public void fun1() {</span><br><span class="line">		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");</span><br><span class="line">		User user = (User) context.getBean("user");</span><br><span class="line">		System.out.println(user);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+结果如下：
+![结果](SpringStudyOne/SpringStudyTestResult.jpg)
+
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -546,7 +574,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="../../../../tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -747,18 +779,16 @@
                     <div class="card-image">
                         
                         
-                        <img src="../../../../medias/featureimages/12.jpg" class="responsive-img" alt="Second">
+                        <img src="../../../../medias/featureimages/15.jpg" class="responsive-img" alt="Spring学习一">
                         
-                        <span class="card-title">Second</span>
+                        <span class="card-title">Spring学习一</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+                            Spring学习基础1.Spring是什么？2.Spring能干什么？3.Spring怎么用？
+Spring是什么？&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring是一个以IOC（Invers
                         
                     </div>
                     <div class="publish-info">
@@ -774,6 +804,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="../../../../tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
