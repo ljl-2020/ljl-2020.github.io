@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Spring学习一</title>
+      <link href="/2020/06/08/SpringStudyOne/"/>
+      <url>/2020/06/08/SpringStudyOne/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Spring学习基础"><a href="#Spring学习基础" class="headerlink" title="Spring学习基础"></a>Spring学习基础</h3><p>1.Spring是什么？<br>2.Spring能干什么？<br>3.Spring怎么用？</p><h2 id="Spring是什么？"><a href="#Spring是什么？" class="headerlink" title="Spring是什么？"></a>Spring是什么？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring是一个以IOC（Inversion of Control,控制反转）和AOP（Aspect Oriented Programming）为内核的框架。IOC是Spring的基础。</p><p>IOC(控制反转):在传统的编程方式中，获取对象的方式通常使用new关键字主动创建一个对象。而Spring中的IoC方式，对象有IoC容器来创建，装配（初始化）和管理。这种由程序创建对象的方式转变为Spring IoC容器创建对象的反转过程即为IOC。</p><p>DI(Dependency Inject)：依赖注入。所谓依赖注入，就是由IoC容器在运行期间动态的将某种依赖关系注入到对象之间，例如，将对象B注入到对象A的成员变量。</p><p style="color:red;">IOC 与 DI 之间的关系：<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.控制反转和依赖注入是对同一件事的不同描述，从某个方面讲，就是它们的角度不同。依赖注入是从应用程序角度描述，而控制反转则是从容器角度描述。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.依赖注入不能脱离控制反转而单独存在，DI操作需要在IOC基础之上进行。</p><p>IOC底层原理：<br>  1.使用的技术：<br>    (1)XML配置文件<br>    (2)dom4j解析文件<br>    (3)工厂设计模式<br>    (4)反射<br>  2.步骤：<br>    (1)创建xml配置文件，配置要创建的对象类，如：<br></p><p><code>&lt;bean id="userService" class="com.ljl.user.UserService"&gt;</code><br>    (2)创建工厂类，并增加返回类型为<font color="#0000cd">UserService</font>的方法。在方法体中首先利用dom4j解析xml文件，根据文件解析出class值，然后通过反射创建对象。</p><p></p>以下为案例：<br>User类如下：````package com.ljl.ioc_di;<p>public class User {<br>    private String name;<br>    private int id;<br>    public User() {}<br>    public User(String name, int id) {<br>        this.name = name;<br>        this.id = id;<br>    }<br>    public void setName(String name) {<br>        this.name = name;<br>    }<br>    public void setId(int id) {<br>        this.id = id;<br>    }<br>    @Override<br>    public String toString() {<br>        return “User [name=” + name + “, id=” + id + “]”;<br>    }<br>}</p><pre><code>applicationContext.xml:</code></pre><!--?xml version="1.0" encoding="UTF-8"?--><p><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans        https://www.springframework.org/schema/beans/spring-beans.xsd"><br>    <bean id="user" class="com.ljl.ioc_di.User"><br>           <property name="name" value="李四"><br>           <property name="id" value="2"><br>   </property></property></bean><br></beans></p><pre><code>测试类TstSpring：</code></pre><p>package com.ljl.test;</p><p>import org.junit.Test;<br>import org.springframework.context.ApplicationContext;<br>import org.springframework.context.support.ClassPathXmlApplicationContext;</p><p>import com.ljl.ioc_di.User;</p><p>public class TestSpring {<br>    @Test<br>    public void fun1() {<br>        ApplicationContext context = new<br>        ClassPathXmlApplicationContext(“applicationContext.xml”);<br>        User user = (User) context.getBean(“user”);<br>        System.out.println(user);<br>    }<br>}</p><pre><code>结果如下：![结果](SpringStudyOne/SpringStudyTestResult.jpg)</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>你好世界</title>
+      <link href="/2020/05/02/first/"/>
+      <url>/2020/05/02/first/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一个博客"><a href="#第一个博客" class="headerlink" title="第一个博客"></a><span style="font-color:#red; text-align:center">第一个博客</span></h2><h3 id="你好世界"><a href="#你好世界" class="headerlink" title="你好世界"></a>你好世界</h3><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> Node </tag>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2020/05/02/hello-world/"/>
+      <url>/2020/05/02/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
