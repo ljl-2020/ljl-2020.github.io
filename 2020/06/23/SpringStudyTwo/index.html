@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring学习一, The Blog Of LJL">
+    <meta name="keywords" content="Spring学习二, The Blog Of LJL">
     <meta name="description" content="奋斗吧少年">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Spring学习一 | The Blog Of LJL</title>
+    <title>Spring学习二 | The Blog Of LJL</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -412,12 +412,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring学习一</h1>
+                    <h1 class="description center-align post-title">Spring学习二</h1>
                 </div>
             </div>
         </div>
@@ -551,6 +551,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -558,7 +567,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-08
+                    2020-06-23
                 </div>
                 
 
@@ -574,80 +583,106 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Spring学习基础"><a href="#Spring学习基础" class="headerlink" title="Spring学习基础"></a>Spring学习基础</h3><p>1.Spring是什么？<br>2.Spring能干什么？<br>3.Spring怎么用？</p>
-<h2 id="Spring是什么？"><a href="#Spring是什么？" class="headerlink" title="Spring是什么？"></a>Spring是什么？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring是一个以IOC（Inversion of Control,控制反转）和AOP（Aspect Oriented Programming）为内核的框架。IOC是Spring的基础。</p>
-<p>IOC(控制反转):在传统的编程方式中，获取对象的方式通常使用new关键字主动创建一个对象。而Spring中的IoC方式，对象有IoC容器来创建，装配（初始化）和管理。这种由程序创建对象的方式转变为Spring IoC容器创建对象的反转过程即为IOC。</p>
-<p>DI(Dependency Inject)：依赖注入。所谓依赖注入，就是由IoC容器在运行期间动态的将某种依赖关系注入到对象之间，例如，将对象B注入到对象A的成员变量。</p>
-<p style="color:red;">IOC 与 DI 之间的关系：<br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-1.控制反转和依赖注入是对同一件事的不同描述，从某个方面讲，就是它们的角度不同。依赖注入是从应用程序角度描述，而控制反转则是从容器角度描述。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.依赖注入不能脱离控制反转而单独存在，DI操作需要在IOC基础之上进行。</p>
-<p>IOC底层原理：<br>
-  1.使用的技术：<br>    (1)XML配置文件<br>
-    (2)dom4j解析文件<br>    (3)工厂设计模式<br>    (4)反射<br>
-  2.步骤：<br>
-    (1)创建xml配置文件，配置要创建的对象类，如：<br>
+                <h3 id="Spring中的Bean"><a href="#Spring中的Bean" class="headerlink" title="Spring中的Bean"></a>Spring中的Bean</h3><p>1.Bean的配置<br>2.Bean的作用域<br>3.Bean的装配方式</p>
+<h4 id="Bean的配置"><a href="#Bean的配置" class="headerlink" title="Bean的配置"></a>Bean的配置</h4><p>  Spring如同一个工厂，用于生产和管理Spring容器中Bean。Bean是指项目中提供业务功能的Bean,Beans就是一个常见的JavaBean、Java类。那么如何使用这个工厂来配置Bean呢————使用xml文件配置。以下是&lt;beans&gt;常用的属性和子元素。</p>
+<pre><code>    &lt;!-- 将指定的com.ljl.user.dao.UserDao 类交给Spring容器让容器创建对象 --&gt;
+    &lt;!-- id中的值为实例对象的名字 --&gt;
+    &lt;bean id="userDao" class="com.ljl.user.dao.UserDao"/&gt;</code></pre><p><img src="/2020/06/23/SpringStudyTwo/IMG_0050.PNG" alt=""></p>
+<p style="color:red;font-size:16px;">注意:<br>  如果在Bean中未设置id和name，那么Spring会将class的值当作id使用。</p>
 
-</p><p><code>&lt;bean id="userService" class="com.ljl.user.UserService"&gt;</code><br>    (2)创建工厂类，并增加返回类型为<font color="#0000cd">UserService</font>的方法。在方法体中首先利用dom4j解析xml文件，根据文件解析出class值，然后通过反射创建对象。</p>
-<p></p>
-以下为案例：<br>
-User类如下：<p>
+<h4 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h4><p>  Spring4.3中Bean的实例定义了七种作用域，如下图<br><img src="/2020/06/23/SpringStudyTwo/IMG_0051.PNG" alt=""><br>介绍下常用的作用域：<br>1.单例（singleton):在整个应用中，只创建bean的一个实例<br><code>&lt;!-- singleton--&gt;
+      &lt;bean id="userDao" class="com.ljl.user.dao.UserDao" scope="singleton"/&gt;</code><br>如果创建时不使用scope来指定作用域，则默认指定为singleton单例模式。<br>2.原型（Prototype）:每次注入或者通过spring应用上下文获取的时候，都会创建一个新的bean实例<br><code>&lt;!-- prototype--&gt;
+      &lt;bean id="userDao" class="com.ljl.user.dao.UserDao" scope="prototype"/&gt;</code><br>3.会话（session）：在web应用中，为每个会话创建一个bean实例<br><code>&lt;!-- session--&gt;
+      &lt;bean id="userDao" class="com.ljl.user.dao.UserDao" scope="session"/&gt;</code><br>4.请求（Request）：在web应用中，为每个请求创建一个bean实例<br><code>&lt;!-- request--&gt;
+      &lt;bean id="userDao" class="com.ljl.user.dao.UserDao" scope="request"/&gt;</code></p>
+<h4 id="Bean的装配方式"><a href="#Bean的装配方式" class="headerlink" title="Bean的装配方式"></a>Bean的装配方式</h4><p>  Bean的装配可以理解为依赖关系的注入，本次只学习了常用的两种装配方式，基于xml的装配、基于Annotation（注解）方式的装配和自动装配。</p>
+<ul>
+<li>基于xml的装配<br>  spring中提供了两种注入方式，一为基于setter方法，二为基于构造方法。基于构造方法的注入请看第一篇的学习。以下只介绍基于setter方法的装配。<p style="color:red;font-size:16px;">注意:<br>  所有基于setter方法的xml配置均需要有setter方法</p></li>
+</ul>
+<p>1.常量注入：</p>
+<pre><code>    &lt;bean id="user" class="com.ljl.user.dao.User"&gt;
+        &lt;!--name为属性即（有setter方法的成员）名字 --&gt;
+        &lt;!--value为属性所设置的具体值--&gt;
+        &lt;!-- ref为应类型所对应的值 --&gt;
+        &lt;property name="pwd" value="456"/&gt;
+    &lt;/bean&gt;</code></pre><p>2.<font color="red">对象注入（重要）：</font></p>
+<pre><code>  &lt;!-- 创建userDao对象 --&gt;
+    &lt;bean id="userDao" class="com.ljl.user.dao.UserDao"/&gt;
+    &lt;!-- 创建userService对象 --&gt;
+    &lt;bean id="userService" class="com.ljl.user.service.UserService"&gt;
+        &lt;!-- 为userService注入对象引用 --&gt;
+        &lt;property name="userDao" ref="userDao"/&gt;
+    &lt;/bean&gt;</code></pre><p>3.数组注入：</p>
+<pre><code> &lt;bean id="user" class="com.ljl.user.dao.User"&gt;
+        &lt;property name="books" &gt;
+            &lt;array&gt;
+                &lt;value&gt;西游记&lt;/value&gt;
+                &lt;value&gt;水浒传&lt;/value&gt;
+                &lt;value&gt;红楼梦&lt;/value&gt;
+                &lt;value&gt;剑来&lt;/value&gt;
+            &lt;/array&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;</code></pre><p>结果：<img src="/2020/06/23/SpringStudyTwo/IMG_0052.PNG" alt=""><br>其他还有List注入，Map注入，Set注入，以及properties注入形式与数组注入差异不大，其中Map注入和properties注入相似以键值对方式注入数据。</p>
+<ul>
+<li><p>基于Annotation（注解）注入：<br>  尽管基于xml的注入方式可以实现Bean的装配工作，但是如果Bean的数量过大时，这种配置过于繁琐，所以，此时可以利用Annotation方式来进行Benas的装配。以下是常用注解<br><img src="/2020/06/23/SpringStudyTwo/IMG_0053.PNG" alt=""></p>
+<p style="color:red;font-size:16px;">注意:<br>  基于注解方式的注入，首先要导入相应的约束和jar包，可不设置setter方法</p>
+上表中的注解大致可分为两类：
+</li>
+<li><p>描述Spring中的Bean（@xxxx 放在类声明的上一行）：<br>  @Component:可以用于任何层，通常不推荐直接写这种注解。<br>  @Repository:用于数据访问层（Dao层）中的Bean。<br>  @Service:用于业务逻辑层（Service层），用于将业务逻辑层的类表示为Spring中的Bean。<br>  @Controller:用于控制层（如Spring MVC 的Controller），用于将控制层中的类标识为Spring中的Bean。</p>
+</li>
+<li><p>为Spring中的属性装配（@xxxx 放在属性、setter、构造方法上一行）：<br>  @Autowired：用于对属性变量、属性的setter及构造方法进行标注，完成Bean的自动装配。<br>  @Resource：作用与@Autowired相似，但@Autowired默认按Bean类型装配，无需设置name和type。而@Resource若指定那么属性，则需要按Bean的名称进行实例，若指定type属性，则按Bean类型进行装配。若都不指定则先按照Bean实例名称进行匹配，不能匹配时按照Bean类型进行装配。<br>  @Qualifier：与@Autowired配合使用，会将默认的按Bena类型匹配改为按Bean实例名称匹配。</p>
+</li>
+</ul>
+<pre><code> &lt;!-- 第一步开启注解处理器 --&gt;
+    &lt;context:component-scan base-package="com.ljl.user"/&gt;</code></pre><p>UserDao类如下：</p>
+<pre><code>
+package com.ljl.user.dao;
 
-</p><pre><code>package com.ljl.ioc_di;
+import org.springframework.stereotype.Repository;
 
-public class User {
-    private String name;
-    private int id;
-    public User() {}
-    public User(String name, int id) {
-        this.name = name;
-        this.id = id;
+@Repository("userDao")
+public class UserDao {
+    public void addUser(){
+        System.out.println("添加一个用户");
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    @Override
-    public String toString() {
-        return "User [name=" + name + ", id=" + id + "]";
-    }    
-}
-applicationContext.xml:
-```
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
-    &lt;bean id="user" class="com.ljl.ioc_di.User"&gt;
-           &lt;property name="name" value="李四"/&gt;
-           &lt;property name="id" value="2"/&gt;
-   &lt;/bean&gt;
-&lt;/beans&gt;
-```
-TestSpring:
-```
-package com.ljl.test;
+}</code></pre><p>UserService类如下：</p>
+<pre><code>package com.ljl.user.service;
+import com.ljl.user.dao.UserDao;
+import org.springframework.stereotype.Service;
 
-import org.junit.Test;
+import javax.annotation.Resource;
+@Service(name="userService")
+public class UserService {
+    @Resource(name = "userDao")
+    private UserDao userDao;
+    public void addUser(){
+        userDao.addUser();
+        System.out.println("UserService添加用户");
+    }
+}</code></pre><p>测试类如下：</p>
+<pre><code>package com.ljl.test;
+
+import com.ljl.user.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ljl.ioc_di.User;
+public class Test {
+    ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
 
-public class TestSpring {
-    @Test
-    public void fun1() {
-        ApplicationContext context = new 
-        ClassPathXmlApplicationContext("applicationContext.xml");
-        User user = (User) context.getBean("user");
-        System.out.println(user);
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+        UserService userService = (UserService) context.getBean("userService");
+        userService.addUser();
     }
-}
-```
-结果如下：
-![结果](SpringStudyOne/SpringStudyTestResult.jpg)
-</code></pre><p></p><script>
+}</code></pre><p>结果：<br><img src="/2020/06/23/SpringStudyTwo/IMG_0054.PNG" alt=""></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  Spring中的Bean的配置，常用的配置方式为xml配置和注解配置，xml配置不适合大量的beans配置，而注解方式则很好的弥补了这一点，所以在实际应用中可以两种方式结合使用，使用xml方式标明Bean的创建，而使用注解方式来装配Bean的属性。Bean的配置总的思路为：</p>
+<ul>
+<li>导入相关的包</li>
+<li>创建需要使用的Bean，即Java类，并创建方法（xml方式的配置必须设置setter方法）。</li>
+<li>创建Spring配置文件，编写相关的Bean配置</li>
+<li>创建测试类 </li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -690,7 +725,7 @@ public class TestSpring {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/08/SpringStudyOne/">http://yoursite.com/2020/06/08/SpringStudyOne/</a>
+                    <a href="http://yoursite.com/2020/06/23/SpringStudyTwo/">http://yoursite.com/2020/06/23/SpringStudyTwo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -900,7 +935,7 @@ public class TestSpring {
         repo: 'ljl-2020.github.io',
         owner: 'ljl-2020',
         admin: 'ljl-2020',
-        id: '2020-06-08T15-44-28',
+        id: '2020-06-23T15-31-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
     gitalk.render('gitalk-container');
@@ -923,9 +958,10 @@ public class TestSpring {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/23/SpringStudyTwo/">
                     <div class="card-image">
@@ -944,9 +980,9 @@ Bean的配置  Spring如同一个工厂，用于生产和管理Spring容器�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -959,6 +995,7 @@ Bean的配置  Spring如同一个工厂，用于生产和管理Spring容器�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -977,27 +1014,25 @@ Bean的配置  Spring如同一个工厂，用于生产和管理Spring容器�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/02/first/">
+                <a href="/2020/06/08/SpringStudyOne/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="你好世界">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Spring学习一">
                         
-                        <span class="card-title">你好世界</span>
+                        <span class="card-title">Spring学习一</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一个博客你好世界
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src)
+                            Spring学习基础1.Spring是什么？2.Spring能干什么？3.Spring怎么用？
+Spring是什么？&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spring是一个以IOC（Invers
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-08
                             </span>
                         <span class="publish-author">
                             
@@ -1010,16 +1045,8 @@ Bean的配置  Spring如同一个工厂，用于生产和管理Spring容器�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/Node/">
-                        <span class="chip bg-color">Node</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
