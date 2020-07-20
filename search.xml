@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Spring学习三</title>
+      <link href="/2020/07/03/SpringStudyThree/"/>
+      <url>/2020/07/03/SpringStudyThree/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h2><p> 1.AOP是什么？<br> 2.Aspect开发。</p><h3 id="AOP是什么？"><a href="#AOP是什么？" class="headerlink" title="AOP是什么？"></a>AOP是什么？</h3><h4 id="AOP概念"><a href="#AOP概念" class="headerlink" title="AOP概念"></a>AOP概念</h4><p>  AOP的全称为：Aspect Oriented Programming，即面向切面编程，是面向对象编程（OOP)的一种补充。传统业务处理中，通常都会进行事务处理日志记录等操作，使用传统的组合方式和继承方法能实现对业务处理功能的扩充，但是如果要对某一方法改变，则可能要改变多处代码，所以为解决这个问题，AOP思想随之产生，AOP采取横向抽取机制，将分散在各个方法中的重复代码提取出来，然后在程序要使用时提取出来，然后应用到需要执行的地方。横向抽取机制主要使用动态代理实现，分两种情况，一是有接口时，使用JDK动态代理，接口代理的对象与其实现子类同一级别。二是无接口时，使用cglib动态代理。</p><h4 id="AOP相关术语"><a href="#AOP相关术语" class="headerlink" title="AOP相关术语"></a>AOP相关术语</h4><ul><li>Aspect(切面)：在实际应用中切面通常是指封装的用于横向插入系统功能的类。</li><li>Joinpoint(连接点)：类中哪些方法可以被增强。</li><li>Pointcut(切入点)：类中被实际增强的方法。</li><li>Advice(增强/通知)：实际要扩充的功能。</li><li></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Spring学习二</title>
       <link href="/2020/06/23/SpringStudyTwo/"/>
       <url>/2020/06/23/SpringStudyTwo/</url>
